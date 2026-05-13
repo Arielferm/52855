@@ -1,62 +1,147 @@
-import CalculatorLexer from "./generated/CalculatorLexer.js";
-import CalculatorParser from "./generated/CalculatorParser.js";
-import { CustomCalculatorListener } from "./CustomCalculatorListener.js";
-import { CustomCalculatorVisitor } from "./CustomCalculatorVisitor.js";
-import antlr4, { CharStreams, CommonTokenStream, ParseTreeWalker } from "antlr4";
+import AnalizadorLexer from "./generated/AnalizadorLexer.js";
+import AnalizadorParser from "./generated/AnalizadorParser.js";
+// import CustomAnalizadorVisitor from "./CustomAnalizadorVisitor.js";
+
+import antlr4, { CharStreams, CommonTokenStream } from "antlr4";
 import readline from 'readline';
 import fs from 'fs';
 
 async function main() {
+
     let input;
 
-    // Intento leer la entrada desde el archivo input - en forma sincrona.
+    // Intentar leer desde input.txt
     try {
+
         input = fs.readFileSync('input.txt', 'utf8');
+
     } catch (err) {
-        // Si no es posible leer el archivo, solicitar la entrada del usuario por teclado
-        input = await leerCadena(); // Simula lectura síncrona
+
+        // Si falla, leer por teclado
+        input = await leerCadena();
+
         console.log(input);
     }
 
-    // Proceso la entrada con el analizador e imprimo el arbol de analisis en formato texto
+    // Crear stream de entrada
     let inputStream = CharStreams.fromString(input);
-    let lexer = new CalculatorLexer(inputStream);
+
+    // Crear lexer
+    let lexer = new AnalizadorLexer(inputStream);
+
+    // ===============================
+    // VERIFICAR TOKENS GENERADOS
+    // ===============================
+
+    console.log("Verificando tokens generados por el lexer...");
+
+    const tokens = lexer.getAllTokens();
+
+    if (tokens.length === 0) {
+
+        console.error("No se generaron tokens.");
+        return;
+    }
+
+    // ===============================
+    // TABLA DE TOKENS
+    // ===============================
+
+    console.log("\nTabla de Tokens y Lexemas:");
+
+    console.log("--------------------------------------------------");
+    console.log("| Lexema                 | Token                 |");
+    console.log("--------------------------------------------------");
+
+    for (let token of tokens) {
+
+        const tokenType =
+            AnalizadorLexer.symbolicNames[token.type]
+            || `UNKNOWN (${token.type})`;
+
+        const lexema = token.text;
+
+        console.log(
+            `| ${lexema.padEnd(22)} | ${tokenType.padEnd(22)} |`
+        );
+    }
+
+    console.log("--------------------------------------------------");
+
+    // ==================================================
+    // REPROCESAR TOKENS (getAllTokens vacía el lexer)
+    // ==================================================
+
+    inputStream = CharStreams.fromString(input);
+
+    lexer = new AnalizadorLexer(inputStream);
+
     let tokenStream = new CommonTokenStream(lexer);
-    let parser = new CalculatorParser(tokenStream);
-    let tree = parser.prog();
-    
-    // Verifico si se produjeron errores
+
+    // Crear parser
+    let parser = new AnalizadorParser(tokenStream);
+
+    // Regla inicial
+    let tree = parser.metadata();
+
+    // ===============================
+    // ERRORES SINTÁCTICOS
+    // ===============================
+
     if (parser.syntaxErrorsCount > 0) {
-        console.error("\nSe encontraron errores de sintaxis en la entrada.");
-    } 
-    else {
+
+        console.error(
+            "\nSe encontraron errores sintácticos."
+        );
+
+    } else {
+
         console.log("\nEntrada válida.");
-        const cadena_tree = tree.toStringTree(parser.ruleNames);
-        console.log(`Árbol de derivación: ${cadena_tree}`);
 
-        // Utilizo un listener y un walker para recorrer el arbol e indicar cada vez que reconoce una sentencia (stat)
-        //const listener = new CustomCalculatorListener();
-        // ParseTreeWalker.DEFAULT.walk(listener, tree);
+        // Árbol de derivación
+        const cadena_tree =
+            tree.toStringTree(parser.ruleNames);
 
-        // Utilizo un visitor para visitar los nodos que me interesan de mi arbol
-        const visitor = new CustomCalculatorVisitor();
-        visitor.visit(tree);   
+        console.log(
+            `\nÁrbol de derivación:\n${cadena_tree}`
+        );
+
+        // ====================================
+        // VISITOR (opcional)
+        // ====================================
+
+        /*
+        const visitor = new CustomAnalizadorVisitor();
+        visitor.visit(tree);
+        */
     }
 }
 
+// ====================================
+// LEER CADENA POR TECLADO
+// ====================================
+
 function leerCadena() {
+
     const rl = readline.createInterface({
+
         input: process.stdin,
         output: process.stdout
     });
 
     return new Promise(resolve => {
-        rl.question("Ingrese una cadena: ", (answer) => {
-            rl.close();
-            resolve(answer);
-        });
+
+        rl.question(
+            "Ingrese una cadena: ",
+            (answer) => {
+
+                rl.close();
+
+                resolve(answer);
+            }
+        );
     });
 }
 
-// Ejecuta la función principal
+// Ejecutar programa
 main();
