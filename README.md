@@ -1,6 +1,8 @@
 # 💻 Analizador Léxico y Sintáctico con ANTLR4 y JavaScript
 
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![tests](https://img.shields.io/badge/tests-100%25-success)
+![language](https://img.shields.io/badge/language-JavaScript-yellow)
 
 Proyecto académico desarrollado con **ANTLR4**, **JavaScript** y **Node.js** para construir un analizador capaz de leer, validar e interpretar un lenguaje definido mediante una gramática EBNF.
 
@@ -70,6 +72,18 @@ El proyecto demuestra de manera práctica cómo una computadora interpreta un le
 - Compiladores
 - Validadores
 - Sistemas modernos de procesamiento de información
+
+---
+
+## ▶️ Cómo ejecutar
+
+1. Instalar ANTLR y Node.js en VSCode
+2. Generar parser y lexer
+3. Ingresar datos
+4. Ejecutar el proyecto
+5. Visualización del árbol en VSCode (F5: debug ANTLR)
+
+---
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Arielferm/52855/main/images/1.png" width="500"/>
