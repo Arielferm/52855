@@ -1,0 +1,8 @@
+nombre: imagen_final.png;
+tipo: png;
+tamano: 204800;
+creado: 2026-01-15 08:45;
+modificado: 2026-01-15 09:10;
+autor: Mr_Robot;
+descripcion: Archivo_generado_para_pruebas_del_parser.;
+etiquetas: [imagen,prueba,final];

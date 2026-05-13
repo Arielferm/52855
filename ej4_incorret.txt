@@ -1,0 +1,8 @@
+nombre: informe_final.pdf;
+tipo: pdf;
+tamano: 250000;
+creado: 2026-05-10 14:20;
+modificado: 2026-05-10 15:00;
+autor: IL0V3Y0ú_Worm;
+descripcion: Archivo de análisis semántico.;
+etiquetas: [informe,prueba,gramática];
