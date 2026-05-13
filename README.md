@@ -19,7 +19,7 @@ Estos conceptos se utilizan en:
 - Compiladores
 - APIs
 - Validadores de datos
-- Sistemas de procesamiento de información
+- Sistemas de procesamiento de información, etc.
 
 Lo que ayuda a reducir:
 
@@ -68,3 +68,19 @@ El proyecto demuestra de manera práctica cómo una computadora interpreta un le
 - Compiladores
 - Validadores
 - Sistemas modernos de procesamiento de información
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Arielferm/52855/main/images/1.png" width="500"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Arielferm/52855/main/images/2.png" width="500"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Arielferm/52855/main/images/3.png" width="500"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Arielferm/52855/main/images/4.png" width="500"/>
+</p>
