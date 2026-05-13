@@ -1,5 +1,7 @@
 # 💻 Analizador Léxico y Sintáctico con ANTLR4 y JavaScript
 
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+
 Proyecto académico desarrollado con **ANTLR4**, **JavaScript** y **Node.js** para construir un analizador capaz de leer, validar e interpretar un lenguaje definido mediante una gramática EBNF.
 
 El sistema procesa archivos con estructuras de metadatos, detectando errores y mostrando cómo un compilador o intérprete analiza un lenguaje paso a paso.
