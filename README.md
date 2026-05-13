@@ -3,6 +3,7 @@
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![tests](https://img.shields.io/badge/tests-100%25-success)
 ![language](https://img.shields.io/badge/language-JavaScript-yellow)
+![ANTLR4](https://img.shields.io/badge/ANTLR4-grammar-orange)
 
 Proyecto académico desarrollado con **ANTLR4**, **JavaScript** y **Node.js** para construir un analizador capaz de leer, validar e interpretar un lenguaje definido mediante una gramática EBNF.
 
