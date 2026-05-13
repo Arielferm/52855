@@ -1,0 +1,8 @@
+nombre: respaldo_servidor.zip;
+tipo: zip;
+tamano: 5242880;
+creado: 2026-03-20 22:15:30;
+modificado: 2026-03-21 01:40:10;
+autor: System_Backup;
+descripcion: Respaldo_general_del_servidor_principal.;
+etiquetas: [backup,servidor,seguridad,zip];
